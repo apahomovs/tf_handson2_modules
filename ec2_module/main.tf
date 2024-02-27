@@ -4,13 +4,7 @@ resource "aws_instance" "instance" {
   key_name               = var.key_name
   vpc_security_group_ids = var.vpc_security_group_ids
   subnet_id              = var.subnet_id
-   user_data = <<-EOF
-              #!/bin/bash
-              sudo yum install httpd -y
-              sudo systemctl start httpd.service
-              sudo systemctl enable httpd.service
-              EOF
-
+   user_data             = var.user_data
 
   tags = {
     Name = var.instance_tag
